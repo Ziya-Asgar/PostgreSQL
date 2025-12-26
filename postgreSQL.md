@@ -240,9 +240,9 @@ WHERE TABLE_NAME = '<table_name>';
 To create a table, we use the `CREATE TABLE` command. After the `CREATE TABLE table_name` clause, we specify column names as well as data types and optional constraints. Here is the syntax:
 
 ```sql
-CREATE TABLE table_name {
+CREATE TABLE table_name (
   column_name data_type constraints_if_any
-}
+)
 ```
 
 Here is an example:
