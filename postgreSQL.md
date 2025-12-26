@@ -479,6 +479,8 @@ CREATE TABLE table_name (
 
 A date column can store a date between 4713 BC and 5874897 AD. PostgreSQL uses a 4-byte to store a date value. PostgreSQL accepts various date formats, but it is recommended to use ISO 8601, which is yyyy-mm-dd for date input.
 
+Here is an example of create a table with the `DATE` type:
+
 ```sql
 CREATE TABLE users (
   user_id INT,
@@ -490,6 +492,8 @@ CREATE TABLE users (
   signup_date DATE
 );
 ```
+
+We use the `SET datestyle` command to change the format for the current session. For example, to set the style to ISO with DMY ordering, we execute `SET datestyle TO 'ISO, DMY'`. To see the datestyle setting, we can use `SHOW datestyle;`.
 
 If you want to set the current date as the default value, you can use the `CURRENT_DATE` function as follows:
 
