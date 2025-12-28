@@ -2115,6 +2115,17 @@ ORDER BY
   signup_date;
 ```
 
+We can also extract the parts of the day in a desired format using the `TO_CHAR()` function.
+
+```sql
+SELECT to_char(date '2025-12-27', 'Day');
+SELECT to_char(date '2025-12-27', 'DAY');
+SELECT to_char(date '2025-12-27', 'day');
+SELECT to_char(date '2025-12-27', 'DY');
+SELECT to_char(date '2025-12-27', 'Dy');
+SELECT to_char(date '2025-12-27', 'dy');
+```
+
 <hr>
 
 ### Concatenation
