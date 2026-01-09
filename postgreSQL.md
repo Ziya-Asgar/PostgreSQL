@@ -160,7 +160,8 @@
 - https://www.pgtutorial.com/
 - https://neon.com/postgresql/tutorial
 - https://datalemur.com/sql-tutorial
-- https://www.youtube.com/watch?v=qw--VYLpxG4
+- [FreeCodeCamp Video: Learn PostgreSQL Tutorial - Full Course for Beginners](https://www.youtube.com/watch?v=qw--VYLpxG4)
+- [Video Playlist: PostgreSQL for Everybody](https://www.youtube.com/playlist?list=PLlRFEj9H3Oj7Oj3ndXmNS1FFOUyQP-gEa)
 
 <hr>
 <hr>
