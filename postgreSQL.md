@@ -3366,10 +3366,10 @@ END [ label ];
 
 A block has two main sections:
 
-- Declaration: The declaration section is optional. It is where you declare variables, constants, and cursors.
+- Declaration: The declaration section is optional. It is where you declare variables, constants, and cursors. Each statement in the declaration section is terminated with a semicolon (`;`).
 - Body: The body section is required. It is where you put the logic of the block, such as SQL statements.
 
-A block may include an optional label appearing at the beginning and end.
+A block may include an optional label appearing at the beginning and end. A block ends with a semicolon (`;`) after the end keyword.
 
 Here is a simple example of a block that displays a message:
 
@@ -3384,6 +3384,18 @@ $$;
 
 - The `DO` statement executes the PL/pgSQL block.
 - We use the PL/pgSQL block as a dollar-quoted string constant.
+
+Here is the same example, this time with naming the block:
+
+```sql
+DO
+$$
+<<block_name>>
+BEGIN
+    RAISE NOTICE 'Hello, World';
+END block_name;
+$$;
+```
 
 The following example shows how to define a block with a declaration section. We declare a variable in the declaration section. To declare a variable, you provide the name, data type, and initial value:
 
