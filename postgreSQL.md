@@ -110,6 +110,7 @@
     - [Applying constraints to columns](#applying-constraints-to-columns)
     - [Dropping columns](#dropping-columns)
     - [Truncating a table](#truncating-a-table)
+  - [PL/pgSQL Block](#plpgsql-block)
   - [User-defined Functions](#user-defined-functions)
   - [Stored Procedures](#stored-procedures)
   - [Indexes](#indexes)
@@ -3343,6 +3344,92 @@ You can truncate multiple tables in one go using the `TRUNCATE TABLE` statement:
 
 ```sql
 TRUNCATE TABLE table1, table2, ...;
+```
+
+<hr>
+<hr>
+
+## PL/pgSQL Block
+
+PL/pgSQL is a blocked structure programming language. PL/pgSQL organizes code into blocks.
+
+Here’s the syntax of a block:
+
+```sql
+[ <<label>> ]
+[ DECLARE
+    declarations ]
+BEGIN
+    statements
+END [ label ];
+```
+
+A block has two main sections:
+
+- Declaration: The declaration section is optional. It is where you declare variables, constants, and cursors.
+- Body: The body section is required. It is where you put the logic of the block, such as SQL statements.
+
+A block may include an optional label appearing at the beginning and end.
+
+Here is a simple example of a block that displays a message:
+
+```sql
+DO
+$$
+BEGIN
+    RAISE NOTICE 'Hello, World';
+END;
+$$;
+```
+
+- The `DO` statement executes the PL/pgSQL block.
+- We use the PL/pgSQL block as a dollar-quoted string constant.
+
+The following example shows how to define a block with a declaration section. We declare a variable in the declaration section. To declare a variable, you provide the name, data type, and initial value:
+
+```sql
+DO
+$$
+DECLARE
+    name VARCHAR = 'Joe';
+BEGIN
+    RAISE NOTICE 'Hello %', name;
+END;
+$$;
+```
+
+`%` is a placeholder for the string that comes after the comma.
+
+We can also nest blocks:
+
+```sql
+DO
+$$
+DECLAREDO
+$$
+DECLARE
+	total_q INT = 0;
+BEGIN
+	DECLARE
+		safety_stock INT =10;
+		on_hand_q INT = 100;
+	BEGIN
+		total_q = safety_stock + on_hand_q;
+	END;
+	RAISE NOTICE 'The total quantity is %', total_q;
+END;
+$$;
+	total_q INT = 0;
+BEGIN
+	DECLARE
+		safety_stock INT =10;
+		on_hand_q INT = 100;
+	BEGIN
+		total_q = safety_stock + on_hand_q;
+	END;
+	RAISE NOTICE 'The total quantity is %', total_q;
+END;
+$$;
 ```
 
 <hr>
