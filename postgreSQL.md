@@ -127,6 +127,7 @@
     - [`ARRAY` Data Type](#array-data-type)
     - [`XML` Data Type](#xml-data-type)
     - [`ENUM`](#enum)
+    - [`RECORD`](#record)
     - [`JSON`](#json)
   - [Cast](#cast)
   - [Triggers](#triggers)
@@ -4276,6 +4277,53 @@ For example:
 ```sql
 ALTER TYPE delivery_status
 RENAME VALUE 'pending' TO 'ordered';
+```
+
+<hr>
+
+### `RECORD`
+
+The `RECORD` data type represents a single row of a query’s result set. Here’s the syntax for declaring a `RECORD` variable:
+
+```sql
+DECLARE
+    variable_name RECORD;
+```
+
+The `RECORD` type variable does not have a predefined structure. It inherits the structure of the row when you assign a row to it using the `SELECT INTO` or `FOR` statement.
+
+```sql
+DO $$
+DECLARE
+    v_record RECORD;
+BEGIN
+    SELECT select_list INTO v_record
+    FROM table_name
+    WHERE condition;
+END;
+$$;
+```
+
+```sql
+DO $$
+DECLARE
+    v_record RECORD;
+BEGIN
+    FOR v_record IN
+        SELECT select_list
+        FROM table_name
+        WHERE condition
+    LOOP
+        -- processing each row
+    END LOOP;
+END;
+$$;
+```
+
+To access a field in a record, you use the dot notation syntax as follows:
+
+```sql
+v_record.field_name
 ```
 
 <hr>
