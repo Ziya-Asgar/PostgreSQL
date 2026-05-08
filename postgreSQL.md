@@ -3609,6 +3609,22 @@ DROP FUNCTION IF EXISTS
 CASCADE;
 ```
 
+The `returns setof` option allows us to return one or more rows with a predefined structure from a function.
+
+```sql
+Here’s the syntax for creating a function that returns a set of rows:
+
+create or replace function function_name(parameters)
+returns setof row_structure
+as
+$$
+   -- logic
+   -- ...
+   -- return one or more rows
+   return query select_query;
+$$ language plpgsql;
+```
+
 <hr>
 <hr>
 
