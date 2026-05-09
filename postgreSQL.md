@@ -100,6 +100,8 @@
     - [Natural Join](#natural-join)
     - [`USING`](#using)
   - [Conditional Expressions](#conditional-expressions)
+    - [`CASE`](#case)
+    - [`IF`](#if)
   - [Sequence](#sequence)
   - [Identity Column](#identity-column)
   - [`ALTER TABLE` Statement](#alter-table-statement)
@@ -2809,6 +2811,8 @@ INNER JOIN products p USING (product_id);
 
 ## Conditional Expressions
 
+### `CASE`
+
 A `CASE` expression is a powerful tool, allowing you to perform conditional logic within your queries. Here’s the syntax of the `CASE` expression:
 
 ```sql
@@ -2860,6 +2864,30 @@ SELECT
     ELSE 'Bulk Order'
   END AS order_size
 FROM transactions;
+```
+
+---
+
+### `IF`
+
+PL/pgSQL offers three forms of the `IF` statements:
+
+- `IF-THEN`
+- `IF-THEN-ELSE`
+- `IF-THEN-ELSEIF`
+
+Here’s the syntax of the `IF-THEN-ELSEIF` statement:
+
+```sql
+IF condition1 THEN
+    statement1;
+ELSEIF condition2 THEN
+    statement2;
+ELSEIF condition3 THEN
+    statement3;
+[ELSE
+    else_statement;]
+END IF;
 ```
 
 <hr>
