@@ -75,6 +75,7 @@
     - [`DATE_TRUNC`](#date_trunc)
     - [`TO_CHAR`](#to_char)
     - [`FORMAT` Function](#format-function)
+    - [`PERFORM`](#perform)
     - [Concatenation](#concatenation)
   - [Subquery](#subquery)
     - [Subquery](#subquery-1)
@@ -2281,6 +2282,42 @@ SELECT
     'Apple iPhone 15'
   ) sql_statement;
 ```
+
+<hr>
+
+### `PERFORM`
+
+Sometimes it is useful to evaluate an expression or `SELECT` query but discard the result, for example when calling a function that has side-effects but no useful result value like calling a function that updates data, or logs an event. To do this in PL/pgSQL, we use the `PERFORM` statement:
+
+```sql
+-- First, we define a simple function that logs a message. It returns void (nothing useful to capture).
+CREATE OR REPLACE FUNCTION send_notification(message TEXT)
+RETURNS void
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RAISE NOTICE 'Notification sent: %', message;
+END;
+$$;
+
+-- Now, we create a function that calls send_notification using PERFORM.
+CREATE OR REPLACE FUNCTION process_user_registration(user_name TEXT)
+RETURNS void
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Perform the action of sending a notification
+    -- The result is discarded immediately
+    PERFORM send_notification('Welcome to the system, ' || user_name || '!');
+
+    RAISE NOTICE 'Registration process for % completed.', user_name;
+END;
+$$;
+
+SELECT process_user_registration('Alice');
+```
+
+If we used just `SELECT send_notification(...)`, PostgreSQL would throw an error because PL/pgSQL requires queries that return rows to be handled with `INTO` (to store the result) or `PERFORM` (to discard it).
 
 <hr>
 
