@@ -74,6 +74,7 @@
     - [`AGE`](#age)
     - [`DATE_TRUNC`](#date_trunc)
     - [`TO_CHAR`](#to_char)
+    - [`FORMAT` Function](#format-function)
     - [Concatenation](#concatenation)
   - [Subquery](#subquery)
     - [Subquery](#subquery-1)
@@ -2228,6 +2229,57 @@ SELECT to_char(date '2025-12-27', 'day');
 SELECT to_char(date '2025-12-27', 'DY');
 SELECT to_char(date '2025-12-27', 'Dy');
 SELECT to_char(date '2025-12-27', 'dy');
+```
+
+<hr>
+
+### `FORMAT` Function
+
+The `FORMAT()` function returns a formatted string based on a template. Here’s the syntax of the `FORMAT()` function:
+
+```sql
+FORMAT(format_string, format_argument1, format_argument2, ...)
+```
+
+The `format_string` may include one or more format specifiers:
+
+- `%s` formats the argument as a string.
+- `%I` formats the argument as an SQL identifier, such as a table name with proper quoting.
+- `%L` formats the argument as an SQL literal.
+
+The format specifiers `%I` and `%L` can be handy for constructing dynamic SQL statements.
+
+Here is an example with `%s`:
+
+```sql
+SELECT
+  FORMAT('Hello, %s', 'pgtutorial.com');
+```
+
+The following example uses the `FORMAT` function with the `%I` specifiers to return a dynamic SQL statement:
+
+```sql
+SELECT
+  FORMAT(
+    'SELECT %I, %I FROM %I',
+    'product_name',
+    'price',
+    'products'
+  ) sql_statement;
+```
+
+The following query uses the `FORMAT` function with the `%L` for formatting literals:
+
+```sql
+SELECT
+  FORMAT(
+    'SELECT %I, %I FROM %I WHERE %I = %L',
+    'product_name',
+    'price',
+    'products',
+    'product_name',
+    'Apple iPhone 15'
+  ) sql_statement;
 ```
 
 <hr>
