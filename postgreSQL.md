@@ -76,6 +76,7 @@
     - [`TO_CHAR`](#to_char)
     - [`FORMAT` Function](#format-function)
     - [`PERFORM`](#perform)
+    - [`EXECUTE`](#execute)
     - [Concatenation](#concatenation)
   - [Subquery](#subquery)
     - [Subquery](#subquery-1)
@@ -2318,6 +2319,54 @@ SELECT process_user_registration('Alice');
 ```
 
 If we used just `SELECT send_notification(...)`, PostgreSQL would throw an error because PL/pgSQL requires queries that return rows to be handled with `INTO` (to store the result) or `PERFORM` (to discard it).
+
+<hr>
+
+### `EXECUTE`
+
+The `EXECUTE` statement in PL/pgSQL is used to run dynamic SQL commands. Unlike standard PL/pgSQL commands where the SQL text is fixed at compile time, `EXECUTE` takes a string containing the SQL command and runs it at runtime.
+
+Because the command is built as a string, you must be careful to sanitize inputs (using functions like `quote_ident`, `quote_nullable`, or `quote_literal`) to prevent SQL injection attacks. `quote_ident`, `quote_literal`, and `quote_nullable` are helper functions in PostgreSQL designed to make Dynamic SQL safe. When you build a SQL command as a string using `EXECUTE` (e.g., `'SELECT * FROM ' || table_name`), you risk SQL Injection if the variable contains malicious text (like `users; DROP TABLE users;--`). These functions automatically escape special characters and add the necessary quotes to ensure the input is treated strictly as data or an identifier, not as executable code. Please note that using the `FORMAT` function is preferable, as it has built-in escaping using `%s`, `%I`, and `%L`.
+
+Here is a simple function that creates a new table with a name provided by the user:
+
+```sql
+CREATE OR REPLACE FUNCTION create_dynamic_table(table_name TEXT)
+RETURNS void
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Build the command string using quote_ident for safety
+    -- This ensures the table name is properly escaped
+    EXECUTE 'CREATE TABLE ' || quote_ident(table_name) || ' (id INT, data TEXT)';
+
+    RAISE NOTICE 'Table % created successfully.', table_name;
+END;
+$$;
+
+SELECT create_dynamic_table('users_data');
+```
+
+We can also use the `USING` clause in the `EXECUTE` statement to pass values (literals) to a dynamic SQL command safely. To do this, we add `$1`, `$2`, etc. to a command string and these symbols refer to values supplied in the `USING` clause. This method is often preferable to inserting data values into the command string as text:
+
+```sql
+CREATE OR REPLACE function insert_user_data(target_table text, user_name text, user_age int)
+RETURNS void
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- 1. quote_ident is used for the table name (an identifier) because it cannot be a parameter ($1).
+    -- 2. $1 and $2 are placeholders for the data values (literals).
+    -- 3. USING provides the actual values for $1 and $2 at runtime.
+    EXECUTE format('INSERT INTO %I (name, age) VALUES ($1, $2)', target_table)
+    USING user_name, user_age;
+
+    RAISE NOTICE 'Inserted user % (age %)' into %', user_name, user_age, target_table;
+END;
+$$;
+
+SELECT insert_user_data('users_data', 'Bob', 25);
+```
 
 <hr>
 
