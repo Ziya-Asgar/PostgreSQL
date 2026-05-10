@@ -77,6 +77,7 @@
     - [`FORMAT` Function](#format-function)
     - [`PERFORM`](#perform)
     - [`EXECUTE`](#execute)
+    - [`PREPARE`](#prepare)
     - [Concatenation](#concatenation)
   - [Subquery](#subquery)
     - [Subquery](#subquery-1)
@@ -2368,6 +2369,28 @@ $$;
 
 SELECT insert_user_data('users_data', 'Bob', 25);
 ```
+
+<hr>
+
+### `PREPARE`
+
+The `PREPARE` statement enables us to prepare a statement with a unique name and execute it repeatedly using the `EXECUTE` command.
+
+Here is the syntax for the `PREPARE` statement:
+
+```sql
+PREPARE name [ ( data_type [, ...] ) ] AS statement
+```
+
+Here is an example:
+
+```sql
+PREPARE fooplan (int, text, bool, numeric) AS
+    INSERT INTO foo VALUES($1, $2, $3, $4);
+EXECUTE fooplan(1, 'Hunter Valley', 't', 200.00);
+```
+
+Prepared statements only last for the duration of the current database session. When the session ends, the prepared statement is forgotten, so it must be recreated before being used again. This also means that a single prepared statement cannot be used by multiple simultaneous database clients; however, each client can create their own prepared statement to use. Prepared statements can be manually cleaned up using the `DEALLOCATE` command.
 
 <hr>
 
