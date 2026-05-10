@@ -8,7 +8,9 @@
   - [Schemas](#schemas)
   - [Listing tables](#listing-tables)
   - [Creating a table](#creating-a-table)
+    - [`CREATE TABLE`](#create-table)
     - [Generated columns](#generated-columns)
+    - [`CREATE TABLE AS`](#create-table-as)
   - [Deleting a table](#deleting-a-table)
   - [Data Types](#data-types)
     - [`BOOLEAN`](#boolean)
@@ -346,6 +348,8 @@ WHERE TABLE_NAME = '<table_name>';
 
 ## Creating a table
 
+### `CREATE TABLE`
+
 To create a table, we use the `CREATE TABLE` command. After the `CREATE TABLE table_name` clause, we specify column names as well as data types and optional constraints. Here is the syntax:
 
 ```sql
@@ -362,6 +366,8 @@ CREATE TABLE users(
   username VARCHAR(50)
 );
 ```
+
+<hr>
 
 ### Generated columns
 
@@ -380,6 +386,28 @@ CREATE TABLE transactions (
 The keyword `STORED` must be specified to choose the stored kind of generated column.
 
 A generated column cannot be written to directly. In `INSERT` or `UPDATE` commands, a value cannot be specified for a generated column, but the keyword `DEFAULT` may be specified.
+
+<hr>
+
+### `CREATE TABLE AS`
+
+`CREATE TABLE AS` creates a table and fills it with data computed by a `SELECT` command. The table columns have the names and data types associated with the output columns of the `SELECT` (except that you can override the column names by giving an explicit list of new column names).
+
+`CREATE TABLE AS` bears some resemblance to creating a view, but it is really quite different: it creates a new table and evaluates the query just once to fill the new table initially. The new table will not track subsequent changes to the source tables of the query. In contrast, a view re-evaluates its defining SELECT statement whenever it is queried.
+
+Here is an example:
+
+```sql
+CREATE TABLE films_recent AS
+  SELECT * FROM films WHERE date_prod >= '2002-01-01';
+```
+
+To copy a table completely, the short form using the `TABLE` command can also be used:
+
+```sql
+CREATE TABLE films2 AS
+  TABLE films;
+```
 
 <hr>
 <hr>
