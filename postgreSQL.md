@@ -2,9 +2,7 @@
 
 - [postgreSQL](#postgresql)
   - [Some Useful Links](#some-useful-links)
-  - [Listing databases](#listing-databases)
-  - [Creating a database](#creating-a-database)
-  - [Deleting a database](#deleting-a-database)
+  - [Creating, Listing, and Deleting Databases](#creating-listing-and-deleting-databases)
   - [Schemas](#schemas)
   - [Listing tables](#listing-tables)
   - [Creating a table](#creating-a-table)
@@ -187,40 +185,9 @@
 <hr>
 <hr>
 
-## Listing databases
+## Creating, Listing, and Deleting Databases
 
-To list the existing databases, we use `list` or `\l` command in psql.
-
-To list the databases using a query, we can use the below code:
-
-```sql
-SELECT *
-FROM pg_catalog.pg_database;
-```
-
-That Postgres catalog contains a row for each database in the server.
-
-<hr>
-<hr>
-
-## Creating a database
-
-To create a database in postgreSQL, we use:
-
-```sql
-CREATE DATABASE db_name;
-```
-
-<hr>
-<hr>
-
-## Deleting a database
-
-To delete a database, we use:
-
-```sql
-DROP DATABASE test;
-```
+[Creating, Listing, and Deleting Databases](./PSQL_CreateListDelete.md)
 
 <hr>
 <hr>
