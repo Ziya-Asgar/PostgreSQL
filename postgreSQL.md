@@ -5482,6 +5482,14 @@ JOIN users u ON t.user_id = u.user_id;
 
 ## Loops
 
+Looping constructs in PostgreSQL must be used inside a PL/pgSQL code block, which can be:
+
+- An anonymous code block (`DO $$ ... $$;`)
+- A PL/pgSQL function (`CREATE FUNCTION ... LANGUAGE plpgsql;`)
+- A stored procedure (`CREATE PROCEDURE ... LANGUAGE plpgsql;`)
+
+---
+
 ### `LOOP`
 
 The `LOOP` statement allows to execute a code block repeatedly. Here’s the basic syntax of the `LOOP` statement:
