@@ -1734,6 +1734,14 @@ SELECT country, COUNT(*) FROM users GROUP BY country;
 SELECT MAX(amount) FROM transactions;
 ```
 
+One of the useful aggregation functions is `STRING_AGG()`. It concatenates a list of strings and places a separator between them. It does not add the separator at the end of the string.
+
+The following shows the syntax of the `STRING_AGG()` function:
+
+```sql
+STRING_AGG ( expression, separator [order_by_clause] )
+```
+
 #### `HAVING` clause
 
 The `HAVING` clause is used to filter the results of a `GROUP BY` operation. It works similarly to the `WHERE` clause but is applied after the grouping and aggregation functions like `SUM()`, `COUNT()`, `AVG()`, etc., have been evaluated.
