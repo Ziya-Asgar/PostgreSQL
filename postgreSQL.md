@@ -9,7 +9,7 @@
   - [Constraints](#constraints)
   - [Inserting Data](#inserting-data)
   - [Importing and Exporting CSV](#importing-and-exporting-csv)
-  - [Updating data](#updating-data)
+  - [Updating Data](#updating-data)
   - [Deleting data from tables](#deleting-data-from-tables)
   - [Querying a database](#querying-a-database)
     - [Data for queries](#data-for-queries)
@@ -203,29 +203,14 @@
 
 ## Importing and Exporting CSV
 
-[Importing and Exporting CSV](./PSQL_ImportingExportingCSV.md.md)
+[Importing and Exporting CSV](./PSQL_ImportingExportingCSV.md)
 
 <hr>
 <hr>
 
-## Updating data
+## Updating Data
 
-To update data in PostgreSQL, we use the `UPDATE` and `SET` statements, which allow us to modify existing records in a table.
-
-```sql
-UPDATE users
-SET account_balance = account_balance + 100
-WHERE username = 'hasan';
-```
-
-The `UPDATE` statement offers the `RETURNING` clause that returns the updated rows.
-
-```sql
-UPDATE users
-SET account_balance = account_balance - 100
-WHERE username = 'hasan'
-RETURNING *;
-```
+[Updating Data](./PSQL_UpdatingData.md)
 
 <hr>
 <hr>
