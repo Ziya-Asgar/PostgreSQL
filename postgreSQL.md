@@ -10,7 +10,7 @@
   - [Inserting Data](#inserting-data)
   - [Importing and Exporting CSV](#importing-and-exporting-csv)
   - [Updating Data](#updating-data)
-  - [Deleting data from tables](#deleting-data-from-tables)
+  - [Deleting Data](#deleting-data)
   - [Querying a database](#querying-a-database)
     - [Data for queries](#data-for-queries)
     - [Basic queries](#basic-queries)
@@ -215,28 +215,9 @@
 <hr>
 <hr>
 
-## Deleting data from tables
+## Deleting Data
 
-The `DELETE` statement permanently removes one or more rows from a table.
-
-```sql
-DELETE FROM products
-WHERE name = 'test product';
-```
-
-The `DELETE` statement has an optional `RETURNING` clause that returns the deleted rows.
-
-```sql
-DELETE FROM products
-WHERE name = 'test product';
-RETURNING *;
-```
-
-Here is how to delete all rows from a table:
-
-```sql
-DELETE FROM person;
-```
+[Deleting Data](./PSQL_DeletingData.md)
 
 <hr>
 <hr>
