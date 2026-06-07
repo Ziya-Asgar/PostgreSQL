@@ -1,6 +1,6 @@
-# Some useful functions and operators
+# Some Functions and Operators
 
-- [Some useful functions and operators](#some-useful-functions-and-operators)
+- [Some Functions and Operators](#some-functions-and-operators)
   - [`IS NULL` Operator](#is-null-operator)
   - [`COALESCE`](#coalesce)
   - [`NULLIF`](#nullif)
@@ -16,6 +16,7 @@
   - [`EXECUTE`](#execute)
   - [`PREPARE`](#prepare)
   - [Concatenation](#concatenation)
+  - [Cast](#cast)
 
 ---
 
@@ -428,6 +429,36 @@ To concatenate strings with a separator, we use the `CONCAT_WS()` function. The 
 ```sql
 SELECT CONCAT_WS(' from ', username, country) FROM users;
 ```
+
+---
+
+---
+
+## Cast
+
+To convert a value of one data type to another, we use the `CAST()` function or cast operator (`::`).
+
+```sql
+CAST(value AS target_type);
+-- or
+value::target_type
+```
+
+Here is an example of casting a string to an integer:
+
+```sql
+SELECT CAST('10' AS INT) result;
+-- or
+SELECT '10'::INT result;
+```
+
+PostgreSQL can sometimes automatically cast a value to a specific one without requiring the `CAST` function or operator. For example:
+
+```sql
+SELECT 1 + '2' result;
+```
+
+In this example, PostgreSQL automatically converts the string '2' to an integer and adds it to the number 1.
 
 ---
 

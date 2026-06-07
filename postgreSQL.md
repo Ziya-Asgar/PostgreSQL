@@ -28,7 +28,6 @@
   - [Stored Procedures](#stored-procedures)
   - [Index](#index)
   - [Denormalized Data Types](#denormalized-data-types)
-  - [Cast](#cast)
   - [Triggers](#triggers)
     - [Creating Triggers](#creating-triggers)
     - [Disabling and Enabling Triggers](#disabling-and-enabling-triggers)
@@ -253,35 +252,6 @@
 ## Denormalized Data Types
 
 [Denormalized Data Types](./PSQL_DenormalizedDataTypes.md)
-
-<hr>
-<hr>
-
-## Cast
-
-To convert a value of one data type to another, we use the `CAST()` function or cast operator (`::`).
-
-```sql
-CAST(value AS target_type);
--- or
-value::target_type
-```
-
-Here is an example of casting a string to an integer:
-
-```sql
-SELECT CAST('10' AS INT) result;
--- or
-SELECT '10'::INT result;
-```
-
-PostgreSQL can sometimes automatically cast a value to a specific one without requiring the `CAST` function or operator. For example:
-
-```sql
-SELECT 1 + '2' result;
-```
-
-In this example, PostgreSQL automatically converts the string '2' to an integer and adds it to the number 1.
 
 <hr>
 <hr>
