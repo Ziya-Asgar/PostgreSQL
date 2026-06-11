@@ -49,203 +49,203 @@
 
 ## Creating, Listing, and Deleting Databases
 
-[Creating, Listing, and Deleting Databases](./PSQL_CreateListDelete.md)
+[Creating, Listing, and Deleting Databases](./Topics/PSQL_CreateListDelete.md)
 
 <hr>
 <hr>
 
 ## Schemas
 
-[Schemas](./PSQL_Schemas.md)
+[Schemas](./Topics/PSQL_Schemas.md)
 
 <hr>
 <hr>
 
 ## Creating, Listing, and Deleting Tables
 
-[Creating, Listing, and Deleting Tables](./PSQL_CreateListDeleteTables.md)
+[Creating, Listing, and Deleting Tables](./Topics/PSQL_CreateListDeleteTables.md)
 
 <hr>
 <hr>
 
 ## Data Types
 
-[Data Types](./PSQL_DataTypes.md)
+[Data Types](./Topics/PSQL_DataTypes.md)
 
 <hr>
 <hr>
 
 ## Constraints
 
-[Constraints](./PSQL_Constraints.md)
+[Constraints](./Topics/PSQL_Constraints.md)
 
 <hr>
 <hr>
 
 ## Inserting Data
 
-[Inserting Data](./PSQL_InsertingData.md)
+[Inserting Data](./Topics/PSQL_InsertingData.md)
 
 <hr>
 <hr>
 
 ## Importing and Exporting CSV
 
-[Importing and Exporting CSV](./PSQL_ImportingExportingCSV.md)
+[Importing and Exporting CSV](./Topics/PSQL_ImportingExportingCSV.md)
 
 <hr>
 <hr>
 
 ## Updating Data
 
-[Updating Data](./PSQL_UpdatingData.md)
+[Updating Data](./Topics/PSQL_UpdatingData.md)
 
 <hr>
 <hr>
 
 ## Deleting Data
 
-[Deleting Data](./PSQL_DeletingData.md)
+[Deleting Data](./Topics/PSQL_DeletingData.md)
 
 <hr>
 <hr>
 
 ## Queries
 
-[Queries](./PSQL_Queries.md)
+[Queries](./Topics/PSQL_Queries.md)
 
 <hr>
 <hr>
 
 ## Some Functions and Operators
 
-[Some Functions and Operators](./PSQL_SomeFuncsOps.md)
+[Some Functions and Operators](./Topics/PSQL_SomeFuncsOps.md)
 
 <hr>
 <hr>
 
 ## Subqueries
 
-[Subqueries](./PSQL_Subqueries.md)
+[Subqueries](./Topics/PSQL_Subqueries.md)
 
 <hr>
 <hr>
 
 ## Common Table Expressions
 
-[Common Table Expressions](./PSQL_CommonTableExpressions.md)
+[Common Table Expressions](./Topics/PSQL_CommonTableExpressions.md)
 
 <hr>
 <hr>
 
 ## Views
 
-[Views](./PSQL_Views.md)
+[Views](./Topics/PSQL_Views.md)
 
 <hr>
 <hr>
 
 ## Joins
 
-[Joins](./PSQL_Joins.md)
+[Joins](./Topics/PSQL_Joins.md)
 
 <hr>
 <hr>
 
 ## Conditional Expressions
 
-[Conditional Expressions](./PSQL_Conditionals.md)
+[Conditional Expressions](./Topics/PSQL_Conditionals.md)
 
 <hr>
 <hr>
 
 ## Sequence
 
-[Sequence](./PSQL_Sequence.md)
+[Sequence](./Topics/PSQL_Sequence.md)
 
 <hr>
 <hr>
 
 ## Identity Column
 
-[Identity Column](./PSQL_IdentityColumn.md)
+[Identity Column](./Topics/PSQL_IdentityColumn.md)
 
 <hr>
 <hr>
 
 ## Changing Tables
 
-[Changing Tables](./PSQL_ChangingTables.md)
+[Changing Tables](./Topics/PSQL_ChangingTables.md)
 
 <hr>
 <hr>
 
 ## PL/pgSQL Block and Variables
 
-[PL/pgSQL Block and Variables](./PSQL_PLpgSQLBlockAndVariables.md)
+[PL/pgSQL Block and Variables](./Topics/PSQL_PLpgSQLBlockAndVariables.md)
 
 <hr>
 <hr>
 
 ## User Defined Functions
 
-[User Defined Functions](./PSQL_UserDefinedFunctions.md)
+[User Defined Functions](./Topics/PSQL_UserDefinedFunctions.md)
 
 <hr>
 <hr>
 
 ## Special Variable Found
 
-[Special Variable Found](./PSQL_SpecialVariableFound.md)
+[Special Variable Found](./Topics/PSQL_SpecialVariableFound.md)
 
 <hr>
 <hr>
 
 ## Exception Handling
 
-[Exception Handling](./PSQL_ExceptionHandling.md)
+[Exception Handling](./Topics/PSQL_ExceptionHandling.md)
 
 <hr>
 <hr>
 
 ## Stored Procedures
 
-[Stored Procedures](./PSQL_StoredProcedures.md)
+[Stored Procedures](./Topics/PSQL_StoredProcedures.md)
 
 <hr>
 <hr>
 
 ## Index
 
-[Index](./PSQL_Index.md)
+[Index](./Topics/PSQL_Index.md)
 
 <hr>
 <hr>
 
 ## Denormalized Data Types
 
-[Denormalized Data Types](./PSQL_DenormalizedDataTypes.md)
+[Denormalized Data Types](./Topics/PSQL_DenormalizedDataTypes.md)
 
 <hr>
 <hr>
 
 ## Triggers
 
-[Triggers](./PSQL_Triggers.md)
+[Triggers](./Topics/PSQL_Triggers.md)
 
 <hr>
 <hr>
 
 ## Window Functions
 
-[Window Functions](./PSQL_WindowFunctions.md)
+[Window Functions](./Topics/PSQL_WindowFunctions.md)
 
 <hr>
 <hr>
 
 ## Loops
 
-[Loops](./PSQL_Loops.md)
+[Loops](./Topics/PSQL_Loops.md)
 
 <hr>
 <hr>
